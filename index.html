@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="big-heart"></div>
+    <div class="container">
+        <div class="question">will you marry me ? ❤️</div>
+        <button class="button" id="yesButton">Yes!</button>
+    </div>
+
+    <!-- Custom Alert Modal -->
+    <div class="custom-alert" id="customAlert">
+        <div class="alert-header">I Love You!</div>
+        <div id="heartsContainer"></div>
+        <button class="close-alert" id="closeAlert">Close</button>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const customAlert = document.getElementById('customAlert');
+        const closeAlert = document.getElementById('closeAlert');
+        const heartsContainer = document.getElementById('heartsContainer');
+
+        yesButton.addEventListener('click', () => {
+            // Show custom alert
+            customAlert.style.display = 'block';
+
+            // Generate floating hearts around the alert
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.textContent = '❤️';
+
+                // Randomize heart position around the modal
+                heart.style.left = `${Math.random() * 100 + 20}px`;
+                heart.style.top = `${Math.random() * 40 + 20}px`;
+
+                heartsContainer.appendChild(heart);
+
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+        });
+
+        closeAlert.addEventListener('click', () => {
+            // Close the custom alert
+            customAlert.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
